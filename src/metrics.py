@@ -149,7 +149,7 @@ def _build_equity_curve(trades, bal_events, initial_capital, deposits_conf):
 
     events_df = pd.DataFrame(events).sort_values("Time").reset_index(drop=True)
     events_df["Equity"] = events_df["Delta"].cumsum()
-    events_df = events_df.drop_duplicates(subset=["Time"], keep="last")
+    events_df = events_df.drop_duplicates(subset=["Time"], keep="last").reset_index(drop=True)
 
     return events_df.rename(columns={"Time": "Date"})[["Date", "Equity"]]
 

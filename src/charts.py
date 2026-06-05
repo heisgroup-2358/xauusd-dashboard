@@ -51,7 +51,7 @@ def plot_equity_curve(equity_df, metrics):
         annotation_font=dict(size=10, color="#888"),
     )
 
-    dd_end = equity_df.iloc[
+    dd_end = equity_df.loc[
         (equity_df["Equity"] - equity_df["Equity"].cummax()).idxmin()
     ]
     fig.add_trace(
